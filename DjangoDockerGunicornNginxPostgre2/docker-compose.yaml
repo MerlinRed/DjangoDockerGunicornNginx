@@ -1,0 +1,40 @@
+version: "3.7"
+
+services: 
+
+
+    web:
+        build: 
+            context: .
+            dockerfile: Dockerfile
+        ports: 
+            - "9996:9996"
+        entrypoint: 
+            - ./entrypoint.sh
+        volumes: 
+            - ./:/app
+        depends_on: 
+            - postgresql
+
+
+    postgresql:
+        image: postgres:13.2-alpine
+        environment: 
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=password
+        ports: 
+            - "5432:5432"
+
+
+    nginx:
+        build: 
+            context: ./nginx
+            dockerfile: Dockerfile
+        ports: 
+            - "9898:9898"
+            - "80:80"
+            - "443:443"
+        depends_on: 
+            - web
+        volumes: 
+            - ./static/:/static
