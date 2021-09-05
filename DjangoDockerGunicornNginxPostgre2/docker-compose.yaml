@@ -31,7 +31,6 @@ services:
             context: ./nginx
             dockerfile: Dockerfile
         ports: 
-            - "9898:9898"
             - "80:80"
             - "443:443"
         depends_on: 

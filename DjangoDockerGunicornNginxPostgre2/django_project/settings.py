@@ -29,7 +29,7 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env("DEBUG")
 
-ALLOWED_HOSTS = ['0.0.0.0', 'web']
+ALLOWED_HOSTS = ['0.0.0.0', 'web', 'localhost', 'django']
 
 
 # Application definition
@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'psycopg2'
+    'psycopg2',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
